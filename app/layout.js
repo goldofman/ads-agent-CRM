@@ -11,7 +11,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      data-theme="corporate" /* include daisyui theme from tailwind.config */
+    >
       <body className={inter.className}>{children}</body>
     </html>
   );
