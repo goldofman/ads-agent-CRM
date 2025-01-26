@@ -1,8 +1,8 @@
 import Image from "next/image";
-
 import ButtonLogin from "@/components/ButtonLogin";
 import ListItems from "@/components/ListItems";
 import FAQListItems from "@/components/FAQListItems";
+import Demo from "./Demo.jpeg";
 
 function Home() {
   const isLoggedIn = true;
@@ -27,8 +27,10 @@ function Home() {
     <main>
       {/* Header */}
       <section className="bg-base-200">
-        <div className="bg-base-200 flex justify-between items-center px-8 py-2 max-w-3xl mx-auto">
-          <div className="font-bold">BetterProduct</div>
+        <div className="bg-base-200 flex justify-between items-center px-8 py-2 max-w-5xl mx-auto">
+          <div className="font-bold">
+            <a href="/">BetterProduct</a>
+          </div>
           <div className="space-x-4 max-md:hidden">
             <a href="#pricing" className="link link-hover">
               Pricing
@@ -43,17 +45,27 @@ function Home() {
         </div>
       </section>
       {/* Hero */}
-      <section className="flex min-h-screen flex-col text-center justify-between px-8 py-32 max-w-3xl mx-auto">
-        <h1 className="text-4xl lg:text-5xl font-extrabold mb-6">
-          Make your product better by collection customers feedbacks
-        </h1>
-        <div className="opacity-90 mb-10">
-          <h2>
-            Easily create a feedback board to collect the priority features your
-            customers need most. They'll love it.
-          </h2>
+      <section className="flex flex-col lg:flex-row gap-14 lg:text-left lg:items-start items-center justify-between px-8 py-32 max-w-5xl mx-auto">
+        <Image
+          src={Demo}
+          alt="Demo of the product"
+          className="w-96 rounded-3xl"
+        />
+        <div>
+          <h1 className="text-4xl lg:text-5xl font-extrabold mb-6">
+            Make your product better by collection customers feedbacks
+          </h1>
+
+          <div className="opacity-90 mb-10">
+            <h2>
+              Easily create a feedback board to collect the priority features
+              your customers need most. They'll love it.
+            </h2>
+          </div>
+          <div>
+            <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
+          </div>
         </div>
-        <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
       </section>
       {/* Pricing */}
       <section className="bg-base-200" id="pricing">

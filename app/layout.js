@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      data-theme="light"
+      data-theme="bumblebee"
       /* include daisyui theme from tailwind.config */
       className="scroll-smooth"
     >
