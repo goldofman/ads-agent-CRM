@@ -13,7 +13,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      data-theme="corporate" /* include daisyui theme from tailwind.config */
+      data-theme="light"
+      /* include daisyui theme from tailwind.config */
+      className="scroll-smooth"
     >
       <body className={inter.className}>{children}</body>
     </html>
