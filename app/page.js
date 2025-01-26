@@ -59,7 +59,7 @@ function Home() {
           <div className="opacity-90 mb-10">
             <h2>
               Easily create a feedback board to collect the priority features
-              your customers need most. They'll love it.
+              your customers need most. They&apos;ll love it.
             </h2>
           </div>
           <div>
