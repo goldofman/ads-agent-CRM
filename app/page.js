@@ -13,7 +13,7 @@ function Home() {
   const greeting1 = "Hello" + name;
   console.log(greeting1);
   // OUTPUT 1: "Hello Ihor"
-  const greeting2 = `Hello ${isLoggedIn ? name : "there"}`;
+  const greeting2 = `Hello ${isLoggedIn ? ,name : "there"}`;
   console.log(greeting2);
   // OUTPUT 2: "Hello Ihor"
 
