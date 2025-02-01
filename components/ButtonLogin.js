@@ -14,6 +14,10 @@ const ButtonLogin = ({ isLoggedIn, name, extraStyle }) => {
     );
   }
   return <button>Login</button>;
+
+  // 1. Create a login page
+  // 2. Create email/password form with input fields
+  // 3. Create make a post request to api/auth/login
 };
 
 export default ButtonLogin;
