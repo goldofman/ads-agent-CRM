@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,7 +18,12 @@ export default function RootLayout({ children }) {
       /* include daisyui theme from tailwind.config */
       className="scroll-smooth"
     >
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div>
+          <Toaster />
+        </div>
+        {children}
+      </body>
     </html>
   );
 }

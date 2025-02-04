@@ -1,10 +1,47 @@
-export default function Dashboard() {
+import ButtonLogout from "@/components/ButtonLogout";
+import FormNewBoard from "@/components/FormNewBoard";
+import { auth } from "@/auth";
+import connectMongo from "@/libs/mongoose";
+import User from "/app/models/User";
+import Board from "../models/Board";
+
+async function getUser() {
+  const session = await auth();
+
+  await connectMongo();
+
+  return await User.findById(session.user.id).populate("boards");
+}
+
+export default async function Dashboard() {
+  const user = await getUser();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Your dashboard</h1>
-      <div>
-        <h2>Here your private area with all you need.</h2>
-      </div>
+    <main className="bg-base-200 min-h-screen">
+      {/* Header */}
+      <section className="bg-base-100">
+        <div className="max-w-5xl mx-auto px-5 py-2 flex justify-end">
+          <ButtonLogout />
+        </div>
+      </section>
+
+      <section className="px-5 py-12 mx-auto max-w-5xl space-y-12">
+        <FormNewBoard />
+        <div>
+          <h1 className="font-extrabold  text-xl mb-4">
+            {user.boards.length} Boards
+          </h1>
+          <ul className="space-y-4">
+            {user.boards.map((board) => {
+              return (
+                <div key={board._id} className="bg-base-100 p-6 rounded-3xl">
+                  {board.name}
+                </div>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
     </main>
   );
 }

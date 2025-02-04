@@ -3,25 +3,24 @@ import ButtonLogin from "@/components/ButtonLogin";
 import ListItems from "@/components/ListItems";
 import FAQListItems from "@/components/FAQListItems";
 import Demo from "./Demo.jpeg";
+import { auth } from "@/auth";
 
-function Home() {
-  const isLoggedIn = true;
-  const name = "Ihor";
-  const age = 31;
-  let canVote;
+async function Home() {
+  const session = await auth();
+  console.log(session);
 
-  const greeting1 = "Hello" + name;
-  console.log(greeting1);
-  // OUTPUT 1: "Hello Ihor"
-  const greeting2 = `Hello ${isLoggedIn ? name : "there"}`;
-  console.log(greeting2);
-  // OUTPUT 2: "Hello Ihor"
+  // const greeting1 = "Hello" + name;
+  // console.log(greeting1);
+  // // OUTPUT 1: "Hello Ihor"
+  // const greeting2 = `Hello ${isLoggedIn ? name : "there"}`;
+  // console.log(greeting2);
+  // // OUTPUT 2: "Hello Ihor"
 
-  canVote = age >= 18 ? "Yes" : "No";
-  // condition ? value if true : value if false
+  // canVote = age >= 18 ? "Yes" : "No";
+  // // condition ? value if true : value if false
 
-  console.log(canVote);
-  // Output: Yes
+  // console.log(canVote);
+  // // Output: Yes
 
   return (
     <main>
@@ -40,7 +39,7 @@ function Home() {
             </a>
           </div>
           <div>
-            <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
+            <ButtonLogin session={session} />
           </div>
         </div>
       </section>
@@ -63,7 +62,7 @@ function Home() {
             </h2>
           </div>
           <div>
-            <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
+            <ButtonLogin session={session} />
           </div>
         </div>
       </section>
@@ -110,11 +109,7 @@ function Home() {
               })}
               <ListItems>Your customers are happy</ListItems>
             </ul>
-            <ButtonLogin
-              isLoggedIn={isLoggedIn}
-              name={name}
-              extraStyle="w-full"
-            />
+            <ButtonLogin session={session} extraStyle="w-full" />
           </div>
         </div>
       </section>
