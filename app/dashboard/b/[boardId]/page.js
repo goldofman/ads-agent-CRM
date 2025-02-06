@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import { auth } from "@/auth";
 import Link from "next/link";
 import CardBoardLink from "@/components/CardBoardLink";
+import ButtonDeleteBoard from "@/components/ButtonDeleteBoard";
 
 const getBoard = async (boardId) => {
   const session = await auth();
@@ -16,13 +17,9 @@ const getBoard = async (boardId) => {
     userId: new mongoose.Types.ObjectId(session.user.id),
   });
 
-  if (!board) {
-    redirect("/dashboard");
-  }
-
   if (!session?.user?.id) {
-    console.log("❌ Користувач не знайдений або не автентифікований");
-    redirect("/dashboard");
+    console.log("❌ You haven't access to this page");
+    redirect("/");
   }
 
   return board;
@@ -34,8 +31,8 @@ export default async function FeedbackBoard({ params }) {
   return (
     <main className="bg-base-200 min-h-screen">
       {/* Header */}
-      <section className="bg-base-200">
-        <div className="bg-base-200 flex justify-between items-center px-8 py-2 max-w-5xl mx-auto">
+      <section className="bg-base-100">
+        <div className="bg-base-100 flex justify-between items-center px-8 py-2 max-w-5xl mx-auto">
           <div className="font-bold">
             <a href="/">BetterProduct</a>
           </div>
@@ -67,11 +64,9 @@ export default async function FeedbackBoard({ params }) {
         </div>
       </section>
       <section className="max-w-5xl mx-auto px-5 py-12 space-y-12">
-        <h1 className="font-extrabold texl-xl mb-4">
-          {boardId}
-          {board.name}
-        </h1>
-        <CardBoardLink boardId={board._id} />
+        <h1 className="font-extrabold texl-xl mb-4">{boardId}</h1>
+        <CardBoardLink boardId={boardId} />
+        <ButtonDeleteBoard boardId={boardId} />
       </section>
     </main>
   );

@@ -4,9 +4,9 @@ import toast from "react-hot-toast";
 
 const CardBoardLink = ({ boardId }) => {
   const boardLink = `${
-    process.env.NODE_ENV === "developent"
+    process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://betterproduct.vercel.app/"
+      : "https://betterproduct.vercel.app"
   }/b/${boardId}`;
 
   const copyLink = () => {
