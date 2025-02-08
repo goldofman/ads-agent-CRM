@@ -14,7 +14,7 @@ const getBoard = async (boardId) => {
 
   const board = await Board.findOne({
     _id: boardId,
-    userId: new mongoose.Types.ObjectId(session.user.id),
+    userId: new mongoose.Types.ObjectId(session?.user?.id),
   });
 
   if (!session?.user?.id) {
@@ -28,6 +28,7 @@ const getBoard = async (boardId) => {
 export default async function FeedbackBoard({ params }) {
   const { boardId } = params;
   const board = await getBoard(boardId);
+
   return (
     <main className="bg-base-200 min-h-screen">
       {/* Header */}
@@ -65,8 +66,8 @@ export default async function FeedbackBoard({ params }) {
       </section>
       <section className="max-w-5xl mx-auto px-5 py-12 space-y-12">
         <h1 className="font-extrabold texl-xl mb-4">{boardId}</h1>
-        <CardBoardLink boardId={boardId} />
-        <ButtonDeleteBoard boardId={boardId} />
+        <CardBoardLink boardId={boardId.toString()} />
+        <ButtonDeleteBoard boardId={boardId.toString()} />
       </section>
     </main>
   );
