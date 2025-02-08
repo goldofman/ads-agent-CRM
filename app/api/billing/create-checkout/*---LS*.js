@@ -27,7 +27,7 @@ export async function POST(req) {
 
     const checkoutLS = await createCheckout(
       process.env.LS_STORE_ID,
-      precess.env.LS_VARIANT_ID,
+      process.env.LS_VARIANT_ID,
       {
         productOptions: { redirectUrl: body.successUrl },
         checkoutData: {
