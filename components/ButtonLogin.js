@@ -16,11 +16,20 @@ const ButtonLogin = ({ session, extraStyle }) => {
           signIn(undefined, { callbackUrl: dashboardUrl });
         }}
       >
-        Your dashboard {session.user.name || "friend"}
+        Open dashboard {session.user.name}
       </Link>
     );
   }
-  return <button className="btn btn-primary">Get starter</button>;
+  return (
+    <button
+      className={`btn btn-primary ${extraStyle ? extraStyle : ""}`}
+      onClick={() => {
+        signIn(undefined, { callbackUrl: dashboardUrl });
+      }}
+    >
+      Get started
+    </button>
+  );
 
   // 1. Create a login page
   // 2. Create email/password form with input fields

@@ -6,6 +6,7 @@ import User from "/app/models/User";
 import Board from "../models/Board";
 import Link from "next/link";
 import ButtonCheckout from "@/components/ButtonCheckout";
+import ButtonPortal from "@/components/ButtonPortal";
 
 async function getUser() {
   const session = await auth();
@@ -23,7 +24,8 @@ export default async function Dashboard() {
       {/* Header */}
       <section className="bg-base-100">
         <div className="max-w-5xl mx-auto px-5 py-2 flex justify-between">
-          <ButtonCheckout />
+          {user.hasAccess ? <ButtonPortal /> : <ButtonCheckout />}
+          <div className="py-3">BetterProduct</div>
           <ButtonLogout />
         </div>
       </section>

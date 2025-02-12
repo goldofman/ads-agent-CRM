@@ -24,8 +24,17 @@ export async function POST(req) {
       const user = await User.findById(data.object.client_reference_id);
 
       user.hasAccess = true;
-      user.customerId = data.object.customer;
+      user.customerId =
+        data.object.customer || data.object.customer_email || null;
 
+      await user.save();
+    } else if (type === "customer.subscription.deleted") {
+      // Revoke access to the product (subscription Scelled or non-payment)
+      await connectMongo();
+      const user = await User.findOne({
+        customerId: data.object.customer,
+      });
+      user.hasAccess = false;
       await user.save();
     }
   } catch (e) {
