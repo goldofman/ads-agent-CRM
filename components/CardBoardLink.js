@@ -14,7 +14,7 @@ const CardBoardLink = ({ boardId }) => {
     toast.success("Copied to clipboard!");
   };
   return (
-    <div className="bg-base-100 rounded-2xl text-sm px-4 py-2.5 flex items-center max-w-96">
+    <div className="bg-base-200 rounded-2xl text-sm px-4 py-2.5 flex items-center max-w-96">
       <p className="truncate">{boardLink}</p>
       <button className="btn btn-sm btn-neutral bt-square" onClick={copyLink}>
         <svg
