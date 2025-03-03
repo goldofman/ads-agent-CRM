@@ -16,7 +16,7 @@ const ButtonLogin = ({ session, extraStyle }) => {
           signIn(undefined, { callbackUrl: dashboardUrl });
         }}
       >
-        Open dashboard {session.user.name}
+        Open dashboard →
       </Link>
     );
   }
@@ -27,7 +27,7 @@ const ButtonLogin = ({ session, extraStyle }) => {
         signIn(undefined, { callbackUrl: dashboardUrl });
       }}
     >
-      Get started
+      Choose your tarrif plan →
     </button>
   );
 

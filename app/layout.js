@@ -1,7 +1,12 @@
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import Footer from "@/components/Footer";
 import "./globals.css";
+import { Nunito } from "next/font/google";
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["300", "400", "600", "700", "800", "900", "1000"],
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,16 +20,15 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      data-theme="bumblebee"
+      data-theme="mytheme"
       /* include daisyui theme from tailwind.config */
       className="scroll-smooth"
     >
-      <body className={inter.className}>
+      <body className={nunito.className}>
         <div>
           <Toaster />
         </div>
         {children}
-        <Footer />
       </body>
     </html>
   );

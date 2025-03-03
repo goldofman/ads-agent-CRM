@@ -10,6 +10,13 @@ import Link from "next/link";
 import CardBoardLink from "@/components/CardBoardLink";
 import ButtonDeleteBoard from "@/components/ButtonDeleteBoard";
 
+export const metadata = {
+  title: "Your dashboard",
+  keywords: "dashboard, boards, feedback",
+  description:
+    "Easily create a feedback board to collect the priority features your customers need most.",
+};
+
 const getData = async (boardId) => {
   const session = await auth();
   await connectMongo();
@@ -48,10 +55,10 @@ export default async function FeedbackBoard({ params }) {
             <a href="/">BetterProduct</a>
           </div>
           <div className="space-x-4 max-md:hidden">
-            <a href="#pricing" className="link link-hover">
+            <a href="/#pricing" className="link link-hover">
               Pricing
             </a>
-            <a href="#faq" className="link link-hover">
+            <a href="/#faq" className="link link-hover">
               FAQ
             </a>
           </div>
@@ -77,16 +84,44 @@ export default async function FeedbackBoard({ params }) {
       <section className="max-w-5xl mx-auto px-5 py-12 flex flex-col md:flex-row md:items-start gap-12">
         <div className="bg-base-100 p-5 rounded-3xl space-y-8 shrink-0 md:sticky md:top-4">
           <h1 className="font-extrabold texl-xl mb-4">
-            {board ? board.name.toString() : "Loading..."}
+            {board ? board.name.toString() : "Name is loading..."}
           </h1>
           <CardBoardLink boardId={boardId.toString()} />
-          <ButtonDeleteBoard boardId={boardId.toString()} />
+          <div className="space-2 flex flex-row gap-4">
+            <ButtonDeleteBoard boardId={boardId.toString()} />
+            <a href="#" className="btn btn-primary">
+              Open public board
+            </a>
+          </div>
         </div>
         <ul className="space-y-4 flex-grow">
           {posts.length > 0 ? (
-            posts.map((post) => <CardPostAdmin key={post._id} post={post} />)
+            posts.map((post) => (
+              <div key={post._id}>
+                <CardPostAdmin post={post} />
+              </div>
+            ))
           ) : (
-            <CardPostAdmin isExample={true} />
+            <>
+              <CardPostAdmin
+                post={{
+                  id: "example-1",
+                  title: "Example - New best feature ever 😉",
+                  description:
+                    "You should do your best to improve UX ☺️ and make your users happy 🎉",
+                }}
+                isExample={true}
+              />
+              <CardPostAdmin
+                post={{
+                  id: "example-2",
+                  title: "Second example - Dark mode is a must! 🌙",
+                  description:
+                    "Adding a dark mode will make your app more comfortable for night-time browsing! 🔥",
+                }}
+                isExample={true}
+              />
+            </>
           )}
         </ul>
       </section>

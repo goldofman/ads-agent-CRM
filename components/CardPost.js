@@ -4,16 +4,14 @@ const CardPost = ({ post, isExample = false }) => {
   return (
     <li
       className="bg-base-100 p-6 rounded-3xl flex justify-between items-start"
-      key={isExample ? "example-1" : post._id}
+      key={isExample ? post.id : post._id}
     >
       <div>
         <div className="font-bold mb-1 text-lg">
-          {isExample ? "Example - New best feature ever 😉" : post.title}
+          {isExample ? post.title : post.title}
         </div>
         <div className="opacity-60 leading-relaxed max-h-32 overflow-scroll">
-          {isExample
-            ? "Example - You should do your best to improve UX ☺️ and make your users happy 🎉"
-            : post.description}
+          {isExample ? post.description : post.description}
         </div>
       </div>
       {!isExample ? (
@@ -22,14 +20,14 @@ const CardPost = ({ post, isExample = false }) => {
           initialVotesCounter={post.votesCounter}
         />
       ) : (
-        <button className="group border px-4 py-2 rounded-xl text-lg duration-200 bg-primary text-primary-content border-transparent">
+        <button className="group border px-4 py-2 rounded-xl text-lg duration-200 bg-primary text-primary-content border-transparent pointer-events-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6 group-hover:-translate-y-0.5 duration-200"
+            className="size-6"
           >
             <path
               strokeLinecap="round"

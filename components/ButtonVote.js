@@ -24,12 +24,14 @@ const ButtonVote = ({ postId, initialVotesCounter }) => {
       if (hasVoted) {
         setHasVoted(false);
         setVotesCounter(votesCounter - 1);
+        toast.success("Vote removed!");
 
         await axios.delete(`/api/vote?postId=${postId}`);
         localStorage.removeItem(localStorageKeyName);
       } else {
         setHasVoted(true);
         setVotesCounter(votesCounter + 1);
+        toast.success("Upvoted!");
 
         await axios.post(`/api/vote?postId=${postId}`);
         localStorage.setItem(localStorageKeyName, "true");

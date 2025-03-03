@@ -8,6 +8,13 @@ import Link from "next/link";
 import ButtonCheckout from "@/components/ButtonCheckout";
 import ButtonPortal from "@/components/ButtonPortal";
 
+export const metadata = {
+  title: "Your dashboard",
+  keywords: "dashboard, boards, feedback",
+  description:
+    "Easily create a feedback board to collect the priority features your customers need most.",
+};
+
 async function getUser() {
   const session = await auth();
 

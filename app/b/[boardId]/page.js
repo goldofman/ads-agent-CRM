@@ -9,7 +9,7 @@ const getData = async (boardId) => {
   await connectMongo();
 
   const board = await Board.findById(boardId);
-  const posts = await Post.find({ boardId }).sort({ createdAt: -1 });
+  const posts = await Post.find({ boardId }).sort({ votesCounter: -1 });
 
   if (!board) {
     redirect("/");
@@ -36,9 +36,32 @@ export default async function PublicFeedbackBoard({ params }) {
         <FormAddPost boardId={boardId} />
         <ul className="space-y-4 flex-grow">
           {posts.length > 0 ? (
-            posts.map((post) => <CardPost key={post._id} post={post} />)
+            posts.map((post) => (
+              <div key={post._id}>
+                <CardPost post={post} />
+              </div>
+            ))
           ) : (
-            <CardPost isExample={true} />
+            <>
+              <CardPost
+                post={{
+                  id: "example-1",
+                  title: "Example - New best feature ever 😉",
+                  description:
+                    "You should do your best to improve UX ☺️ and make your users happy 🎉",
+                }}
+                isExample={true}
+              />
+              <CardPost
+                post={{
+                  id: "example-2",
+                  title: "Second example - Dark mode is a must! 🌙",
+                  description:
+                    "Adding a dark mode will make your app more comfortable for night-time browsing! 🔥",
+                }}
+                isExample={true}
+              />
+            </>
           )}
         </ul>
       </section>

@@ -4,16 +4,14 @@ const CardPostAdmin = ({ post, isExample = false }) => {
   return (
     <li
       className="bg-base-100 p-6 rounded-3xl flex justify-between items-start"
-      key={isExample ? "example-1" : post._id}
+      key={isExample ? post.id : post._id}
     >
       <div>
         <div className="font-bold mb-1 text-lg">
-          {isExample ? "Example - New best feature ever 😉" : post.title}
+          {isExample ? post.title : post.title}
         </div>
         <div className="opacity-60 leading-relaxed max-h-32 overflow-scroll">
-          {isExample
-            ? "Example - You should do your best to improve UX ☺️ and make your users happy 🎉"
-            : post.description}
+          {isExample ? post.description : post.description}
         </div>
       </div>
       {!isExample ? (
