@@ -45,7 +45,7 @@ const Hero = () => {
           </div>
         </div>
         <p className="text-sm mt-4 opacity-80">
-          *Only 5 seats availiable on this month
+          *Only 12 seats availiable this month
         </p>
       </div>
       <div className="max-md:hidden">

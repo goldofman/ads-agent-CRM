@@ -22,6 +22,11 @@ const userSchema = new mongoose.Schema({
     default: false,
   },
 
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+
   customerId: {
     type: String,
   },

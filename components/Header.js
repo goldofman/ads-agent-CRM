@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <section className="bg-white-100 border-b border-gray-200">
       <div className="bg-white-100 flex justify-between items-center px-8 py-2 max-w-5xl mx-auto">
-        <div className="opacity-70 hover:opacity-100">
+        <div className="opacity-75 hover:opacity-100">
           <a href="/">
             <svg
               version="1.0"
@@ -42,31 +42,31 @@ const Header = () => {
         <div className="space-x-6 max-md:hidden">
           <a
             href="#how"
-            className="link link-hover opacity-65 hover:opacity-100"
+            className="link link-hover opacity-75 hover:opacity-100"
           >
             How it works?
           </a>
           <a
-            href="#cases"
-            className="link link-hover opacity-65 hover:opacity-100"
+            href="#reviews"
+            className="link link-hover opacity-75 hover:opacity-100"
           >
-            Use cases
+            Testimonials
           </a>
           <a
             href="#faq"
-            className="link link-hover opacity-65 hover:opacity-100"
+            className="link link-hover opacity-75 hover:opacity-100"
           >
             Knowledge base
           </a>
           <a
             href="#about"
-            className="link link-hover opacity-65 hover:opacity-100"
+            className="link link-hover opacity-75 hover:opacity-100"
           >
             About Jeva
           </a>
           <a
             href="#"
-            className="btn hover:drop-shadow-sm opacity-65 hover:opacity-100"
+            className="btn hover:drop-shadow-sm opacity-75 hover:opacity-100"
           >
             Sign in
           </a>

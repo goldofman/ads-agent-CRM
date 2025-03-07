@@ -6,12 +6,14 @@ const Hiw = () => {
       </h3>
       <div className="flex max-w-5xl mx-auto px-4">
         <iframe
-          title="vimeo-player"
-          src="https://player.vimeo.com/video/1018833878?h=7249e4bca9"
           width="100%"
-          height="400"
-          frameborder="0"
-          allowfullscreen
+          height="500"
+          src="https://www.youtube-nocookie.com/embed/12W37NDBzi0?si=q92rR_DGzzC6tQnP"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
         ></iframe>
       </div>
     </section>

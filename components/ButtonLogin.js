@@ -1,39 +1,63 @@
 "use client";
 
-import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { useState } from "react";
 
-// This button is used to log in customers and open the dashboard
 const ButtonLogin = ({ session, extraStyle }) => {
+  const [loading, setLoading] = useState(false);
   const dashboardUrl = "/dashboard";
-  console.log(extraStyle);
-  if (session) {
-    return (
-      <Link
-        href={dashboardUrl}
-        className={`btn btn-primary  ${extraStyle ? extraStyle : ""}`}
-        onClick={() => {
-          signIn(undefined, { callbackUrl: dashboardUrl });
-        }}
-      >
-        Open dashboard →
-      </Link>
-    );
-  }
+  const pricingUrl = "/#pricing";
+
+  const handleLogin = async () => {
+    setLoading(true);
+
+    try {
+      // Виконуємо signIn через next-auth
+      const result = await signIn("email", { redirect: false });
+
+      if (!result?.error) {
+        // Отримуємо email користувача після входу
+        const userEmail = result.email;
+
+        // Виконуємо запит до API, щоб перевірити, чи є email у базі
+        const res = await fetch("/api/check-customer", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: userEmail }),
+        });
+
+        const data = await res.json();
+
+        if (data.exists) {
+          // Якщо email є в базі — перенаправляємо на dashboard
+          window.location.href = dashboardUrl;
+        } else {
+          // Якщо email відсутній — перенаправляємо на сторінку тарифів
+          window.location.href = pricingUrl;
+        }
+      } else {
+        console.error("Login error:", result.error);
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <button
-      className={`btn btn-primary ${extraStyle ? extraStyle : ""}`}
-      onClick={() => {
-        signIn(undefined, { callbackUrl: dashboardUrl });
-      }}
+      className={`btn hover:drop-shadow-sm opacity-75 hover:opacity-100 ${
+        extraStyle ? extraStyle : ""
+      } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+      onClick={handleLogin}
+      disabled={loading}
     >
-      Choose your tarrif plan →
+      {loading ? "Checking..." : session ? "Sign in →" : "Sign in"}
     </button>
   );
-
-  // 1. Create a login page
-  // 2. Create email/password form with input fields
-  // 3. Create make a post request to api/auth/login
 };
 
 export default ButtonLogin;

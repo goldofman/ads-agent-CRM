@@ -43,7 +43,7 @@ export default async function Dashboard() {
           <h1 className="font-extrabold  text-xl mb-4">
             {user.boards.length} Boards
           </h1>
-          <ul className="space-y-4">
+          <ul className="space-y-4 text-red-500">
             {user.boards.map((board) => {
               return (
                 <div key={board._id}>
