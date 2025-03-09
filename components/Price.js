@@ -3,9 +3,11 @@ import React from "react";
 const pricingPlans = [
   {
     title: "$495",
+    oldPrice: "$645",
     description: "one time payment",
     features: [
       "Facebook or Instagram ad campaign",
+      "Recommended for users without any ads skills",
       "Promo for campaign done in 4-7 days",
       "Ad campaign runs in 5-10 days",
       "Creating up to 5 ads",
@@ -15,15 +17,26 @@ const pricingPlans = [
       "Every week campaign optimization",
       "One month supporting",
       "Next month supporting with 50% discount (optional)",
+      "Success moderation of ads guaranteed",
+      "Full report in the end of campaign",
       "Replies within 1st hour",
     ],
+    payLink: (
+      <p>
+        <a className="font-bold text-2xl text-white w-full" href="/#p1">
+          Let's start →
+        </a>
+      </p>
+    ),
     seatsLeft: "Only 4 seats left for this month",
   },
   {
     title: "$945",
+    oldPrice: "$1290",
     description: "one time payment",
     features: [
       "Facebook/Instagram and Google Adsense ad campaign",
+      "Recommended for users without any ads skills",
       "Promo for campaign done in 5-10 days",
       "Ad campaign runs in 7-12 days",
       "Creating up to 10 ads",
@@ -33,12 +46,22 @@ const pricingPlans = [
       "Every week campaign optimization",
       "One month supporting",
       "Next month supporting with 50% discount (optional)",
+      "Success moderation of ads guaranteed",
+      "Full report in the end of campaign",
       "Replies within 1st hour",
     ],
+    payLink: (
+      <p>
+        <a className="font-bold text-2xl text-white" href="/#p2">
+          Let's start →
+        </a>
+      </p>
+    ),
     seatsLeft: "Only 2 seats left for this month",
   },
   {
     title: "$195",
+    oldPrice: "$275",
     description: "one time payment",
     features: [
       "Facebook/Instagram or Google Adsense ad campaign",
@@ -55,6 +78,13 @@ const pricingPlans = [
       "One report after campaign approved",
       "Replies within 1st hour",
     ],
+    payLink: (
+      <p>
+        <a className="font-bold text-2xl text-white" href="/#p3">
+          Let's start →
+        </a>
+      </p>
+    ),
     seatsLeft: "Only 6 seats left for this month",
   },
 ];
@@ -92,22 +122,27 @@ const CrossIcon = () => (
 const Price = () => {
   return (
     <section className="bg-blue-800" id="pricing">
-      <div className="flex flex-col items-center justify-center py-32 px-8 max-w-full mx-auto">
-        <h3 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center">
+      <div className="flex flex-col items-center justify-center py-20 px-8 max-w-full mx-auto">
+        <h3 className="text-3xl lg:text-4xl font-extrabold mb-10 text-center">
           <p className="text-white">Choose the price that suits your needs</p>
         </h3>
-        <ul className="steps steps-vertical lg:steps-horizontal pb-8 text-white">
+        <ul className="steps steps-horizontal pb-12 text-white">
           <li className="step step-primary">Choose plan</li>
           <li className="step">Purchase</li>
           <li className="step">Get success ad campaign</li>
         </ul>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
           {pricingPlans.map((plan, index) => (
             <div
               key={index}
-              className="p-8 bg-base-100 max-w-96 rounded-3xl space-y-6 border border-blue-500 hover:drop-shadow-lg flex flex-col h-full"
+              className="p-8 bg-base-100 max-w-96 rounded-3xl space-y-6 border border-blue-700 hover:border-green-600 hover:bg-white hover:border-double flex flex-col h-full"
             >
               <div className="flex items-baseline">
+                <div className="relative">
+                  <div className="absolute -top-24 -left-14 font-extrabold line-through py-2 px-4 text-3xl text-white bg-gray-500 rounded-full flex items-center justify-center">
+                    {plan.oldPrice}
+                  </div>
+                </div>
                 <div className="text-5xl font-black">{plan.title}</div>
                 <div className="uppercase px-2 text-sm font-bold opacity-50">
                   {plan.description}
@@ -127,9 +162,7 @@ const Price = () => {
                 ))}
               </ul>
               <div className="btn btn-primary w-full mt-auto">
-                <a className="font-bold text-2xl text-white" href="#pricing">
-                  Let's start →
-                </a>
+                {plan.payLink}
               </div>
               <p className="text-sm mt-2 opacity-80">{plan.seatsLeft}</p>
             </div>

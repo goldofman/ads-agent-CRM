@@ -1,42 +1,49 @@
 import NextAuth from "next-auth";
-import EmailProvider from "next-auth/providers/resend";
+import Resend from "next-auth/providers/resend";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import mongoose from "mongoose"; // Файл для підключення до MongoDB
+import clientPromise from "@/app/utils/mongodb"; // Додаємо модель користувача
 
 export const authOptions = {
+  adapter: MongoDBAdapter(clientPromise), // Використовуємо адаптер MongoDB
   providers: [
-    EmailProvider({
-      server: process.env.RESEND_API_KEY,
-      from: "no-reply@email.avazun.net",
+    Resend({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+    }),
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (!credentials.email || !credentials.password) {
+          throw new Error("Email і пароль обов'язкові");
+        }
+
+        const res = await fetch(
+          `${process.env.NEXTAUTH_URL}/api/check-customer`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: credentials.email }),
+          }
+        );
+
+        const user = await res.json();
+        if (!user.exists) {
+          throw new Error("Користувача не знайдено");
+        }
+
+        return user;
+      },
     }),
   ],
-  adapter: MongoDBAdapter(mongoose),
-  pages: {
-    signIn: "/login",
-    verifyRequest: "/verify-request",
-    error: "/auth/error",
-  },
-  callbacks: {
-    async signIn({ user, account }) {
-      if (account.provider === "email") {
-        const db = await mongoose;
-        const customersCollection = db.db().collection("customers");
-
-        const isCustomer = await customersCollection.findOne({
-          email: user.email,
-        });
-
-        if (!isCustomer) {
-          return "/#pricing"; // Перенаправляємо, якщо немає в базі
-        }
-      }
-      return true;
-    },
-    async session({ session, user }) {
-      session.user = user;
-      return session;
-    },
-  },
+  secret: process.env.NEXTAUTH_SECRET,
+  session: { strategy: "jwt" },
+  debug: true, // Увімкніть для логування помилок
 };
 
-export default NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };

@@ -18,13 +18,27 @@ const Footer = () => {
             <nav>
               <h6 className="footer-title">Company</h6>
               <a className="link link-hover">About us</a>
-              <a className="link link-hover">Contact</a>
+              <a
+                className="link link-hover"
+                href="mailto:commercial.jevaga@gmail.com"
+              >
+                Contact
+              </a>
             </nav>
             <nav>
               <h6 className="footer-title">Legal</h6>
-              <a className="link link-hover">Terms of use</a>
-              <a className="link link-hover">Privacy policy</a>
-              <a className="link link-hover">Cookie policy</a>
+              <a className="link link-hover" href="/tos">
+                Terms of use
+              </a>
+              <a className="link link-hover" href="/privacy">
+                Privacy policy
+              </a>
+              <a className="link link-hover" href="/refund">
+                Refund policy
+              </a>
+              <a className="link link-hover" href="/tos">
+                Cookie policy
+              </a>
             </nav>
           </footer>
           <footer className="footer text-base-content border-base-300 border-t px-10 py-4">

@@ -12,36 +12,49 @@ const ButtonLogin = ({ session, extraStyle }) => {
     setLoading(true);
 
     try {
-      // Виконуємо signIn через next-auth
+      console.log("Починаємо процес входу...");
       const result = await signIn("email", { redirect: false });
 
-      if (!result?.error) {
-        // Отримуємо email користувача після входу
-        const userEmail = result.email;
+      console.log("Результат входу:", result);
 
-        // Виконуємо запит до API, щоб перевірити, чи є email у базі
-        const res = await fetch("/api/check-customer", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: userEmail }),
-        });
+      if (result?.error) {
+        console.error("Помилка входу:", result.error);
+        alert(`Login error: ${result.error}`);
+        return;
+      }
 
-        const data = await res.json();
+      console.log("Отримуємо сесію...");
+      const session = await fetch("/api/auth/session").then((res) =>
+        res.json()
+      );
 
-        if (data.exists) {
-          // Якщо email є в базі — перенаправляємо на dashboard
-          window.location.href = dashboardUrl;
-        } else {
-          // Якщо email відсутній — перенаправляємо на сторінку тарифів
-          window.location.href = pricingUrl;
-        }
+      console.log("Сесія отримана:", session);
+
+      if (!session?.user?.email) {
+        throw new Error("Не вдалося отримати email користувача");
+      }
+
+      const userEmail = session.user.email;
+
+      const res = await fetch("/api/check-customer", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: userEmail }),
+      });
+
+      const data = await res.json();
+      console.log("Результат перевірки користувача:", data);
+
+      if (data.exists) {
+        window.location.href = dashboardUrl;
       } else {
-        console.error("Login error:", result.error);
+        window.location.href = pricingUrl;
       }
     } catch (error) {
       console.error("Unexpected error:", error);
+      alert(`Unexpected error: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -55,7 +68,7 @@ const ButtonLogin = ({ session, extraStyle }) => {
       onClick={handleLogin}
       disabled={loading}
     >
-      {loading ? "Checking..." : session ? "Sign in →" : "Sign in"}
+      Sign in
     </button>
   );
 };

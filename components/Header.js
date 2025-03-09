@@ -1,8 +1,5 @@
-import ButtonLogin from "@/components/ButtonLogin";
-import { auth } from "@/auth";
+import ButtonLogin from "./ButtonLogin";
 
-const session = await auth();
-console.log(session);
 const Header = () => {
   return (
     <section className="bg-white-100 border-b border-gray-200">
@@ -41,35 +38,30 @@ const Header = () => {
         </div>
         <div className="space-x-6 max-md:hidden">
           <a
-            href="#how"
+            href="/#how"
             className="link link-hover opacity-75 hover:opacity-100"
           >
             How it works?
           </a>
           <a
-            href="#reviews"
+            href="/#reviews"
             className="link link-hover opacity-75 hover:opacity-100"
           >
             Testimonials
           </a>
           <a
-            href="#faq"
+            href="/#faq"
             className="link link-hover opacity-75 hover:opacity-100"
           >
             Knowledge base
           </a>
           <a
-            href="#about"
+            href="/#about"
             className="link link-hover opacity-75 hover:opacity-100"
           >
             About Jeva
           </a>
-          <a
-            href="#"
-            className="btn hover:drop-shadow-sm opacity-75 hover:opacity-100"
-          >
-            Sign in
-          </a>
+          <ButtonLogin />
         </div>
       </div>
     </section>

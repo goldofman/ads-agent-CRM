@@ -21,13 +21,14 @@ const About = () => {
               and you on my working list. I will be you ad manger, so be sure
               you will have my attention.{" "}
               <p className="pt-4">
-                I'm replying in 1st our in my working time 9:00-17:00 GMT (M-F)
+                I'm replying in 1st hour in my working time 9:00-17:00 (Mon-Fri)
+                Lisboa time zone
               </p>
             </div>
           </div>
           <div className="btn bg-white hover:bg-blue-100 !h-14">
             <div className="px-4">
-              <a className="font-bold text-2xl" href="#pricing">
+              <a className="font-bold text-2xl" href="/#pricing">
                 Choose your tarrif plan →
               </a>
             </div>

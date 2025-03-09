@@ -1,6 +1,6 @@
 const Hiw = () => {
   return (
-    <section className="bg-black py-28" id="how">
+    <section className="bg-black pt-28 pb-40" id="how">
       <h3 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center text-white">
         <p>How it works?</p>
       </h3>
