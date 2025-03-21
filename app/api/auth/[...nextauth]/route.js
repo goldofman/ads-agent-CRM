@@ -1,13 +1,20 @@
+// app/api/auth/[...nextauth]/route.js
 import NextAuth from "next-auth";
-import Resend from "next-auth/providers/resend";
+import ResendProvider from "next-auth/providers/resend";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import clientPromise from "@/app/utils/mongodb"; // Додаємо модель користувача
+import clientPromise from "@/libs/mongo"; // змініть шлях відповідно до структури проекту
 
-export const authOptions = {
-  adapter: MongoDBAdapter(clientPromise), // Використовуємо адаптер MongoDB
+// Next Auth 5 config
+export const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut,
+} = NextAuth({
+  adapter: MongoDBAdapter(clientPromise),
   providers: [
-    Resend({
+    ResendProvider({
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM,
     }),
@@ -18,32 +25,50 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials.email || !credentials.password) {
-          throw new Error("Email і пароль обов'язкові");
+        if (!credentials?.email) {
+          return null;
         }
 
-        const res = await fetch(
-          `${process.env.NEXTAUTH_URL}/api/check-customer`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: credentials.email }),
+        try {
+          const client = await clientPromise;
+          const db = client.db();
+          const user = await db.collection("customerId").findOne({
+            email: credentials.email,
+          });
+
+          if (!user) {
+            return null;
           }
-        );
 
-        const user = await res.json();
-        if (!user.exists) {
-          throw new Error("Користувача не знайдено");
+          return {
+            id: user._id.toString(),
+            email: user.email,
+            name: user.name || user.email,
+          };
+        } catch (error) {
+          console.error("Помилка авторизації:", error);
+          return null;
         }
-
-        return user;
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: "jwt" },
-  debug: true, // Увімкніть для логування помилок
-};
-
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+  pages: {
+    signIn: "/auth/signin",
+    error: "/auth/error",
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token && session.user) {
+        session.user.id = token.id;
+      }
+      return session;
+    },
+  },
+});

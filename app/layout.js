@@ -11,9 +11,9 @@ const nunito = Nunito({
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Make your product better by collection customers feedbacks",
+  title: "Get success ad campaign on Facebook or Instagram in one  click",
   description:
-    "Easily create a feedback board to collect the priority features your customers need most. They'll love it. It's free",
+    "I run for you success ad campaign on Facebook or Instagram with flexible tariff plans. Hassle free for you. Just choose wour tariff, seat and relax.",
 };
 
 export default function RootLayout({ children }) {

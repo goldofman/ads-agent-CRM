@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import OlenaRound from "@/public/OlenaRound.png";
 
 const AvatarDisplay = () => {
   const [isOnline, setIsOnline] = useState(false);
@@ -26,10 +28,7 @@ const AvatarDisplay = () => {
     <div className="max-lg:hidden fixed right-0 bottom-0 p-4 sm:none">
       <div className={`avatar ${isOnline ? "online" : "offline"}`}>
         <div className="w-24 rounded-full">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-            alt="Avatar"
-          />
+          <Image src={OlenaRound} alt="Avatar" />
         </div>
       </div>
     </div>

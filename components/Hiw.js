@@ -1,6 +1,6 @@
 const Hiw = () => {
   return (
-    <section className="bg-black pt-28 pb-40" id="how">
+    <section className="bg-black pt-28 pb-40 rounded-b-3xl" id="how">
       <h3 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center text-white">
         <p>How it works?</p>
       </h3>
@@ -10,7 +10,6 @@ const Hiw = () => {
           height="500"
           src="https://www.youtube-nocookie.com/embed/12W37NDBzi0?si=q92rR_DGzzC6tQnP"
           title="YouTube video player"
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen

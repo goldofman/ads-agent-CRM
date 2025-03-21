@@ -4,7 +4,7 @@ const reviewsData = [
   {
     name: "Maria Smantha",
     title: "Web Developer",
-    image: "https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(1).jpg",
+    image: "https://randomuser.me/api/portraits/women/26.jpg",
     review:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
     rating: 5,
@@ -14,7 +14,7 @@ const reviewsData = [
     title: "Small Business Owner",
     image: "https://randomuser.me/api/portraits/men/29.jpg",
     review:
-      "This agency transformed my online presence. Google Ads campaigns were a game-changer!",
+      "This agency transformed my online presence. Instagram Ads campaigns were a game-changer!",
     rating: 5,
   },
   {
@@ -50,7 +50,7 @@ const Reviews = () => {
       </h3>
       <div className="mx-auto text-center md:max-w-xl lg:max-w-3xl">
         <p className="mb-6 pb-2 text-neutral-600 dark:text-neutral-300 md:mb-12 md:pb-0">
-          What clients say about jeva.agency
+          What clients strategy
         </p>
       </div>
 

@@ -1,91 +1,135 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+
+// Приклад функції для визначення країни користувача
+const getUserCountry = async () => {
+  const response = await fetch("https://ipapi.co/json/");
+  const data = await response.json();
+  return data.country_name;
+};
 
 const pricingPlans = [
   {
-    title: "$495",
-    oldPrice: "$645",
+    titleEUR: "€545",
+    titleUSD: "$545",
+    oldPriceEUR: "€695",
+    oldPriceUSD: "$695",
     description: "one time payment",
     features: [
-      "Facebook or Instagram ad campaign",
-      "Recommended for users without any ads skills",
+      "Facebook and/or Instagram ad campaign",
+      "Perfectly fit for users without any ads skills",
       "Promo for campaign done in 4-7 days",
       "Ad campaign runs in 5-10 days",
-      "Creating up to 5 ads",
+      "Creating up to 6 ads",
       "Perform A/B test for ads",
       "Every day ads analysis",
       "Every week detailed report",
       "Every week campaign optimization",
-      "One month supporting",
-      "Next month supporting with 50% discount (optional)",
+      "One month support after ads launch",
+      "Next month support only €300 (optional)",
       "Success moderation of ads guaranteed",
       "Full report in the end of campaign",
       "Replies within 1st hour",
     ],
-    payLink: (
+    payLinkEUR: (
       <p>
-        <a className="font-bold text-2xl text-white w-full" href="/#p1">
+        <Link
+          className="font-bold text-2xl text-white w-full"
+          href="/payment-eur-p1"
+        >
           Let's start →
-        </a>
+        </Link>
       </p>
     ),
-    seatsLeft: "Only 4 seats left for this month",
-  },
-  {
-    title: "$945",
-    oldPrice: "$1290",
-    description: "one time payment",
-    features: [
-      "Facebook/Instagram and Google Adsense ad campaign",
-      "Recommended for users without any ads skills",
-      "Promo for campaign done in 5-10 days",
-      "Ad campaign runs in 7-12 days",
-      "Creating up to 10 ads",
-      "Perform A/B test for ads",
-      "Every day ads analysis",
-      "Every week detailed report",
-      "Every week campaign optimization",
-      "One month supporting",
-      "Next month supporting with 50% discount (optional)",
-      "Success moderation of ads guaranteed",
-      "Full report in the end of campaign",
-      "Replies within 1st hour",
-    ],
-    payLink: (
+    payLinkUSD: (
       <p>
-        <a className="font-bold text-2xl text-white" href="/#p2">
+        <Link
+          className="font-bold text-2xl text-white w-full"
+          href="/payment-usd-p1"
+        >
           Let's start →
-        </a>
+        </Link>
       </p>
     ),
     seatsLeft: "Only 2 seats left for this month",
   },
   {
-    title: "$195",
-    oldPrice: "$275",
+    titleEUR: "€745",
+    titleUSD: "$745",
+    oldPriceEUR: "€895",
+    oldPriceUSD: "$895",
     description: "one time payment",
     features: [
-      "Facebook/Instagram or Google Adsense ad campaign",
+      "Facebook and/or Instagram ad campaign",
+      "Perfectly fit for users without any ads skills",
+      "Promo for campaign done in 5-10 days",
+      "Ad campaign runs in 7-12 days",
+      "Creating up to 12 ads",
+      "Perform A/B test for ads",
+      "Every day ads analysis",
+      "Every week detailed report",
+      "Every week campaign optimization",
+      "One month support after ads launch",
+      "Next month support only €400 (optional)",
+      "Success moderation of ads guaranteed",
+      "Full report in the end of campaign",
+      "Replies within 1st hour",
+    ],
+    payLinkEUR: (
+      <p>
+        <Link className="font-bold text-2xl text-white" href="/payment-eur-p2">
+          Let's start →
+        </Link>
+      </p>
+    ),
+    payLinkUSD: (
+      <p>
+        <Link className="font-bold text-2xl text-white" href="/payment-usd-p2">
+          Let's start →
+        </Link>
+      </p>
+    ),
+    seatsLeft: "Only 2 seats left for this month",
+  },
+  {
+    titleEUR: "€995",
+    titleUSD: "$995",
+    oldPriceEUR: "€1245",
+    oldPriceUSD: "$1245",
+    description: "one time payment",
+    features: [
+      "Facebook and/or Instagram ad campaign",
       "Recommended only for users with ads skills",
-      "Promo for campaign done in 4-5 days",
-      "Ad campaign runs in 5-7 days",
-      "Creating up to 5 ads",
+      "Promo for campaign done in 8-11 days",
+      "Ad campaign runs in 9-12 days",
+      "Creating up to 18 ads",
       "-Perform A/B test for ads-",
       "-Every day ads analysis-",
       "-Every week detailed report-",
       "-Every week campaign optimization-",
-      "-Next month supporting with 50% discount (optional)-",
+      "-2 month support after ads launch-",
+      "-Next month support only €500 (optional)-",
       "Success moderation of ads guaranteed",
       "One report after campaign approved",
       "Replies within 1st hour",
     ],
-    payLink: (
+    payLinkEUR: (
       <p>
-        <a className="font-bold text-2xl text-white" href="/#p3">
+        <Link className="font-bold text-2xl text-white" href="/payment-eur-p3">
           Let's start →
-        </a>
+        </Link>
       </p>
     ),
-    seatsLeft: "Only 6 seats left for this month",
+    payLinkUSD: (
+      <p>
+        <Link className="font-bold text-2xl text-white" href="/payment-usd-p3">
+          Let's start →
+        </Link>
+      </p>
+    ),
+    seatsLeft: "Only 1 seats left for this month",
   },
 ];
 
@@ -120,30 +164,45 @@ const CrossIcon = () => (
 );
 
 const Price = () => {
+  const [country, setCountry] = useState("");
+
+  useEffect(() => {
+    const fetchCountry = async () => {
+      const userCountry = await getUserCountry();
+      setCountry(userCountry);
+    };
+
+    fetchCountry();
+  }, []);
+
+  const isUSACanada = country === "United States" || country === "Canada";
+
   return (
-    <section className="bg-blue-800" id="pricing">
+    <section className="bg-blue-800 rounded-t-3xl" id="pricing">
       <div className="flex flex-col items-center justify-center py-20 px-8 max-w-full mx-auto">
         <h3 className="text-3xl lg:text-4xl font-extrabold mb-10 text-center">
           <p className="text-white">Choose the price that suits your needs</p>
         </h3>
         <ul className="steps steps-horizontal pb-12 text-white">
-          <li className="step step-primary">Choose plan</li>
+          <li className="step step-primary">Choose a plan</li>
           <li className="step">Purchase</li>
-          <li className="step">Get success ad campaign</li>
+          <li className="step">Get a successful ad campaign </li>
         </ul>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
           {pricingPlans.map((plan, index) => (
             <div
               key={index}
-              className="p-8 bg-base-100 max-w-96 rounded-3xl space-y-6 border border-blue-700 hover:border-green-600 hover:bg-white hover:border-double flex flex-col h-full"
+              className="p-8 bg-base-100 max-w-96 rounded-3xl space-y-6 border border-blue-700 hover:border-white hover:bg-white hover:border-double flex flex-col h-full"
             >
               <div className="flex items-baseline">
                 <div className="relative">
                   <div className="absolute -top-24 -left-14 font-extrabold line-through py-2 px-4 text-3xl text-white bg-gray-500 rounded-full flex items-center justify-center">
-                    {plan.oldPrice}
+                    {isUSACanada ? plan.oldPriceUSD : plan.oldPriceEUR}
                   </div>
                 </div>
-                <div className="text-5xl font-black">{plan.title}</div>
+                <div className="text-5xl font-black">
+                  {isUSACanada ? plan.titleUSD : plan.titleEUR}
+                </div>
                 <div className="uppercase px-2 text-sm font-bold opacity-50">
                   {plan.description}
                 </div>
@@ -162,7 +221,7 @@ const Price = () => {
                 ))}
               </ul>
               <div className="btn btn-primary w-full mt-auto">
-                {plan.payLink}
+                {isUSACanada ? plan.payLinkUSD : plan.payLinkEUR}
               </div>
               <p className="text-sm mt-2 opacity-80">{plan.seatsLeft}</p>
             </div>
@@ -170,7 +229,7 @@ const Price = () => {
         </div>
         <p className="text-white opacity-70 mt-6">
           Tariff plans are updated on{" "}
-          <time dateTime="2025-03-01">01.03.2025</time>.
+          <time dateTime="2025-03-01">15.03.2025</time>.
         </p>
       </div>
     </section>

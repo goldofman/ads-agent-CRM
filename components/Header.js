@@ -1,11 +1,14 @@
-import ButtonLogin from "./ButtonLogin";
+import Link from "next/link";
 
 const Header = () => {
+  const isLoggedIn = false; // Replace with actual login state
+  const name = "User";
+
   return (
     <section className="bg-white-100 border-b border-gray-200">
       <div className="bg-white-100 flex justify-between items-center px-8 py-2 max-w-5xl mx-auto">
         <div className="opacity-75 hover:opacity-100">
-          <a href="/">
+          <Link href="/">
             <svg
               version="1.0"
               xmlns="http://www.w3.org/2000/svg"
@@ -34,34 +37,39 @@ const Header = () => {
                 <path d="M2783 853 c-17 -19 -10 -72 27 -204 l48 -177 -39 -63 c-57 -93 -51 -129 21 -129 40 0 68 15 87 45 326 531 330 540 229 551 -47 6 -61 -8 -120 -115 -80 -146 -88 -147 -106 -26 -20 137 -87 191 -147 118z" />{" "}
               </g>{" "}
             </svg>
-          </a>
+          </Link>
         </div>
         <div className="space-x-6 max-md:hidden">
-          <a
+          <Link
             href="/#how"
             className="link link-hover opacity-75 hover:opacity-100"
           >
             How it works?
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#reviews"
             className="link link-hover opacity-75 hover:opacity-100"
           >
             Testimonials
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#faq"
             className="link link-hover opacity-75 hover:opacity-100"
           >
             Knowledge base
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#about"
             className="link link-hover opacity-75 hover:opacity-100"
           >
             About Jeva
-          </a>
-          <ButtonLogin />
+          </Link>
+          <Link
+            className="btn hover:drop-shadow-sm opacity-75 hover:opacity-100"
+            href="https://my.jeva.agency"
+          >
+            Sign in
+          </Link>
         </div>
       </div>
     </section>

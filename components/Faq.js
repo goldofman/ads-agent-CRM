@@ -5,12 +5,14 @@ const faqData = [
     title: "I'm too much newy in advertising, can you help me?",
     content: (
       <p>
-        Yes, please, schedule a paid consultation with me by this{" "}
+        Yes, please, schedule a paid consultation with me by this link -{" "}
         <Link className="hover:text-blue-300 text-blue-600" href="">
-          link
+          Schedule paid consultation
         </Link>
         . I will help you to understand the basics of advertising and how to
-        start your first campaign.
+        start your first campaign. If you decide to work with me after the
+        consultation, I will give you a <b>20% discount</b> on any of my pricing
+        plans.
       </p>
     ),
     defaultChecked: true,
@@ -86,28 +88,30 @@ const faqData = [
 
 const Faq = () => {
   return (
-    <section className="bg-base-100 py-28" id="faq">
-      <h3 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center">
-        Knowledge base
-      </h3>
-      <div className="flex max-w-5xl mx-auto px-4">
-        <div className="join join-vertical w-full">
-          {faqData.map((item, index) => (
-            <div
-              key={index}
-              className="collapse collapse-arrow join-item border-base-200 border"
-            >
-              <input
-                type="radio"
-                name="my-accordion-4"
-                defaultChecked={item.defaultChecked}
-              />
-              <div className="collapse-title text-xl font-medium">
-                {item.title}
+    <section className="bg-white py-28 rounded-t-3xl" id="faq">
+      <div className="!rounded-t-3xl">
+        <h3 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center">
+          Knowledge base
+        </h3>
+        <div className="flex max-w-5xl mx-auto px-4">
+          <div className="join join-vertical w-full">
+            {faqData.map((item, index) => (
+              <div
+                key={index}
+                className="collapse collapse-arrow join-item border-base-200 border"
+              >
+                <input
+                  type="radio"
+                  name="my-accordion-4"
+                  defaultChecked={item.defaultChecked}
+                />
+                <div className="collapse-title text-xl font-medium">
+                  {item.title}
+                </div>
+                <div className="collapse-content">{item.content}</div>
               </div>
-              <div className="collapse-content">{item.content}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
