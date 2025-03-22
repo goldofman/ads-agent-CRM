@@ -1,12 +1,18 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import imgW1 from "@/public/assets/W1.jpg";
+import imgM1 from "@/public/assets/M1.jpg";
+import img3 from "@/public/assets/3.jpg";
+import img4 from "@/public/assets/4.jpg";
+import img5 from "@/public/assets/5.jpg";
 
 const UseCasesCarousel = () => {
   const useCases = [
     {
       title: "Beauty Salon – Barcelona, Spain",
-      avatar: "https://randomuser.me/api/portraits/women/1.jpg",
+      avatar: imgW1,
       budget: "€800/month",
       strategy:
         "Targeted women (23-40 y.o.) interested in hair and nail services. Used engaging video ads showcasing before/after transformations and a limited-time first-visit discount (-10%).",
@@ -22,7 +28,7 @@ const UseCasesCarousel = () => {
     },
     {
       title: "Lawyer (Family Law) – Poland",
-      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+      avatar: imgM1,
       budget: "€500/month",
       strategy:
         "The campaign targeted women (25-50 y.o.) searching for legal help with divorce, child custody, and alimony cases. The ad creatives included testimonials from satisfied clients and carousel ads explaining key legal rights in family law.",
@@ -37,7 +43,7 @@ const UseCasesCarousel = () => {
     },
     {
       title: "Nail Salon – Hamburg, Germany",
-      avatar: "https://randomuser.me/api/portraits/women/3.jpg",
+      avatar: img3,
       budget: "€500/month",
       strategy:
         'Promoted a "New Season Special – 15% Off Nail Packages". The strategy was to consider only new clients, so people who previously booked a service were excluded from the targeting audience.',
@@ -53,7 +59,7 @@ const UseCasesCarousel = () => {
     },
     {
       title: "Real Estate – Barcelona, Spain",
-      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
+      avatar: img4,
       budget: "€1,200/month",
       strategy:
         "Targeted people looking for modern apartments (€300K-€500K). Used carousel ads with interior & drone footage, plus retargeting website visitors.",
@@ -68,7 +74,7 @@ const UseCasesCarousel = () => {
     },
     {
       title: "E-Commerce (Skincare Brand) – Poland",
-      avatar: "https://randomuser.me/api/portraits/women/5.jpg",
+      avatar: img5,
       budget: "€1,000/month",
       strategy:
         "Focused on women 25-45 y.o. interested in skincare and beauty. Used a mix of video ads with product demonstrations and testimonials highlighting key benefits.",
@@ -117,7 +123,12 @@ const UseCasesCarousel = () => {
                         <div className="flex items-center gap-4 mb-6">
                           <div className="avatar">
                             <div className="w-16 rounded-full ring ring-white ring-offset-2">
-                              <img src={currentCase.avatar} alt="Client" />
+                              <Image
+                                src={currentCase.avatar}
+                                width={128}
+                                height={128}
+                                alt="Client"
+                              />
                             </div>
                           </div>
                           <h3 className="card-title text-xl font-bold">

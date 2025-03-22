@@ -21,8 +21,9 @@ const faqData = [
     title: "How do you work with clients? What is the process?",
     content: (
       <p>
-        After your purchase I'm contacting asking more details about your
-        business and your goals. Then we're choosing optimal strategy and ...
+        After your purchase I&apos;m contacting asking more details about your
+        business and your goals. Then we&apos;re choosing optimal strategy and
+        ...
       </p>
     ),
   },
@@ -34,18 +35,18 @@ const faqData = [
     title: "Can you handle a big company advertising?",
     content: (
       <p>
-        I'm not sure. It depends how much products do you need to promote and
-        the qty of ads. We can discuss it.
+        I&apos;m not sure. It depends how much products do you need to promote
+        and the qty of ads. We can discuss it.
       </p>
     ),
     defaultChecked: true,
   },
   {
     title: "What is your refund policy?",
-    content: <p>We haven't refund options</p>,
+    content: <p>We haven&apos;t refund options</p>,
   },
   {
-    title: "What do you mean when you say 'get success ad campaign'?",
+    title: 'What do you mean when you say "get success ad campaign"?',
     content: (
       <p>
         Successfuly moderation pass, active, doint with all requirement by
@@ -54,7 +55,7 @@ const faqData = [
     ),
   },
   {
-    title: "Can I cancel my ʼads supportingʼ subscription?",
+    title: 'Can I cancel my "ads supporting" subscription?',
     content: (
       <p>
         Yes, you can cancel anytime. Your ads campaign will be acttive in your
@@ -67,8 +68,8 @@ const faqData = [
     title: "Did you work with semi legal services/products?",
     content: (
       <p>
-        No. I'm working <b>only</b> with legal services/products that allows by
-        Meta/Google.
+        No. I&apos;m working <b>only</b> with legal services/products that
+        allows by Meta/Google.
       </p>
     ),
   },
@@ -77,7 +78,7 @@ const faqData = [
     content: (
       <p>
         Yes. You need to have your own Meta/Google ads cabinet. I will help you
-        to create it if you don't have it yet. Here is the{" "}
+        to create it if you don&apos;t have it yet. Here is the{" "}
         <Link className="hover:text-blue-300 text-blue-600" href="">
           insctruction
         </Link>

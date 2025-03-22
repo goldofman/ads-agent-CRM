@@ -55,7 +55,7 @@ export default async function Instagram() {
           </li>
           <li>
             <strong>Stories Ads</strong> &ndash; Full-screen ads that appear in
-            between users' Instagram Stories.
+            between users&apos; Instagram Stories.
           </li>
           <li>
             <strong>Reels Ads</strong> &ndash; Short videos placed within

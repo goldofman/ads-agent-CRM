@@ -10,7 +10,6 @@ const AvatarDisplay = () => {
       const now = new Date();
       const dayOfWeek = now.getUTCDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
       const hours = now.getUTCHours();
-      const minutes = now.getUTCMinutes();
 
       const isWeekday = dayOfWeek >= 1 && dayOfWeek <= 5; // Monday to Friday
       const isWithinHours = hours >= 9 && hours < 17; // 9:00 to 17:00

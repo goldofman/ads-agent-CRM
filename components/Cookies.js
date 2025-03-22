@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Cookies = () => {
   return (
     <div className="block mx-auto px-6 fixed bottom-6">
@@ -7,10 +9,12 @@ const Cookies = () => {
           style={{ cursor: "auto" }}
         >
           <div className="w-16 mx-auto relative -mt-10 mb-3">
-            <img
+            <Image
               className="-mt-1"
               src="https://www.svgrepo.com/show/30963/cookie.svg"
               alt="Cookie Icon SVG"
+              width={64}
+              height={64}
             />
           </div>
           <span className="w-full sm:w-48  block leading-normal text-gray-800 text-md mb-3">

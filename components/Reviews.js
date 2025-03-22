@@ -1,10 +1,14 @@
 import React from "react";
+import Image from "next/image";
+import img26 from "@/public/assets/26.jpg";
+import img29 from "@/public/assets/29.jpg";
+import img35 from "@/public/assets/35.jpg";
 
 const reviewsData = [
   {
     name: "Maria Smantha",
     title: "Web Developer",
-    image: "https://randomuser.me/api/portraits/women/26.jpg",
+    image: img26,
     review:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
     rating: 5,
@@ -12,7 +16,7 @@ const reviewsData = [
   {
     name: "Daniel Roberts",
     title: "Small Business Owner",
-    image: "https://randomuser.me/api/portraits/men/29.jpg",
+    image: img29,
     review:
       "This agency transformed my online presence. Instagram Ads campaigns were a game-changer!",
     rating: 5,
@@ -20,7 +24,7 @@ const reviewsData = [
   {
     name: "Olivia Adams",
     title: "Freelance Designer",
-    image: "https://randomuser.me/api/portraits/women/35.jpg",
+    image: img35,
     review:
       "I never expected such great results! Facebook ads strategy was perfectly tailored for my audience.",
     rating: 5,
@@ -61,10 +65,12 @@ const Reviews = () => {
             className={`mb-12 ${index % 3 === 0 ? "md:mb-0" : ""}`}
           >
             <div className="mb-6 flex justify-center">
-              <img
+              <Image
                 src={review.image}
                 className="w-32 rounded-full shadow-lg dark:shadow-black/30"
                 alt={review.name}
+                width={96}
+                height={96}
               />
             </div>
             <h5 className="mb-4 text-xl font-semibold">{review.name}</h5>

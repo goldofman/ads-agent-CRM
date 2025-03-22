@@ -1,9 +1,6 @@
 import Link from "next/link";
 
 const Header = () => {
-  const isLoggedIn = false; // Replace with actual login state
-  const name = "User";
-
   return (
     <section className="bg-white-100 border-b border-gray-200">
       <div className="bg-white-100 flex justify-between items-center px-8 py-2 max-w-5xl mx-auto">

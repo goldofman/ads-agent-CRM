@@ -18,7 +18,7 @@ const pricingPlans = [
     oldPriceUSD: "$695",
     description: "one time payment",
     features: [
-      "Facebook and/or Instagram ad campaign",
+      "Facebook and Instagram ad campaign",
       "Perfectly fit for users without any ads skills",
       "Promo for campaign done in 4-7 days",
       "Ad campaign runs in 5-10 days",
@@ -39,7 +39,7 @@ const pricingPlans = [
           className="font-bold text-2xl text-white w-full"
           href="/payment-eur-p1"
         >
-          Let's start →
+          Let&apos;s start →
         </Link>
       </p>
     ),
@@ -49,7 +49,7 @@ const pricingPlans = [
           className="font-bold text-2xl text-white w-full"
           href="/payment-usd-p1"
         >
-          Let's start →
+          Let&apos;s start →
         </Link>
       </p>
     ),
@@ -62,7 +62,7 @@ const pricingPlans = [
     oldPriceUSD: "$895",
     description: "one time payment",
     features: [
-      "Facebook and/or Instagram ad campaign",
+      "Facebook and Instagram ad campaign",
       "Perfectly fit for users without any ads skills",
       "Promo for campaign done in 5-10 days",
       "Ad campaign runs in 7-12 days",
@@ -80,14 +80,14 @@ const pricingPlans = [
     payLinkEUR: (
       <p>
         <Link className="font-bold text-2xl text-white" href="/payment-eur-p2">
-          Let's start →
+          Let&apos;s start →
         </Link>
       </p>
     ),
     payLinkUSD: (
       <p>
         <Link className="font-bold text-2xl text-white" href="/payment-usd-p2">
-          Let's start →
+          Let&apos;s start →
         </Link>
       </p>
     ),
@@ -100,7 +100,7 @@ const pricingPlans = [
     oldPriceUSD: "$1245",
     description: "one time payment",
     features: [
-      "Facebook and/or Instagram ad campaign",
+      "Facebook and Instagram ad campaign",
       "Recommended only for users with ads skills",
       "Promo for campaign done in 8-11 days",
       "Ad campaign runs in 9-12 days",
@@ -118,14 +118,14 @@ const pricingPlans = [
     payLinkEUR: (
       <p>
         <Link className="font-bold text-2xl text-white" href="/payment-eur-p3">
-          Let's start →
+          Let&apos;s start →
         </Link>
       </p>
     ),
     payLinkUSD: (
       <p>
         <Link className="font-bold text-2xl text-white" href="/payment-usd-p3">
-          Let's start →
+          Let&apos;s start →
         </Link>
       </p>
     ),

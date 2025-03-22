@@ -16,7 +16,7 @@ export default async function Facebook() {
         <p>
           Facebook remains one of the most powerful digital advertising
           platforms, with around 2.9 billion monthly active users. Whether
-          you're a small local business or a global brand, Facebook ad
+          you&apos;re a small local business or a global brand, Facebook ad
           management services can help you reach your targeted customers,
           increase brand awareness, and drive conversions.
         </p>
@@ -102,8 +102,9 @@ export default async function Facebook() {
         <p>
           Facebook&rsquo;s ad platform is designed to convert. With custom
           conversion tracking and AI optimization, businesses can ensure their
-          ads are shown to users most likely to take action, whether it's making
-          a purchase, signing up for a service, or contacting the business.
+          ads are shown to users most likely to take action, whether it&apos;s
+          making a purchase, signing up for a service, or contacting the
+          business.
         </p>
         <br />
         <p>
@@ -120,9 +121,9 @@ export default async function Facebook() {
         <p>
           Using Instagram&rsquo;s and Facebook&rsquo;s powerful ad platforms,
           businesses can significantly boost their visibility, attract new
-          customers, and drive sales. Whether you're looking to start your first
-          campaign or optimize existing ads, working with a professional like
-          Olena Dzhevaha ensures that your business gets results.
+          customers, and drive sales. Whether you&apos;re looking to start your
+          first campaign or optimize existing ads, working with a professional
+          like Olena Dzhevaha ensures that your business gets results.
         </p>
         <br />
         <p>

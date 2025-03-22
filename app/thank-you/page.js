@@ -24,13 +24,13 @@ export default async function ThankYou() {
               Payment Done Successfully!
             </h3>
             <h2 className="text-xl font-semibold my-2">
-              Thank you for purchase ❤️ I'm so glad that you decided to work
-              with me 😊
+              Thank you for purchase ❤️ I&apos;m so glad that you decided to
+              work with me 😊
             </h2>
             <p className="my-8">
-              I'll add your email that you provided with payment into our online
-              workspace for a better communication and productive work. So,
-              please, check your email and accept my invitation.
+              I&apos;ll add your email that you provided with payment into our
+              online workspace for a better communication and productive work.
+              So, please, check your email and accept my invitation.
             </p>
             <p>I will contact you in the nearest time.</p>
             <br />

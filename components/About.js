@@ -23,8 +23,8 @@ const About = () => {
               I run an advertising agency, working independently and managing a
               select number of client ad campaigns. I offer all-inclusive
               advertising services through a few simple tariff plans - just pick
-              yours, and you're on my client list! As your dedicated ad manager,
-              you’ll have my full attention.
+              yours, and you&apos;re on my client list! As your dedicated ad
+              manager, you’ll have my full attention.
               <p className="pt-4">
                 I respond within the 1st hour during my working hours: Monday to
                 Friday, 9:00-17:00 (Mon-Fri) Lisbon time zone

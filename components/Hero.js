@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Olena from "@/public/Olena.png";
 import Olena2 from "@/public/Olena2.png";
+import img78 from "@/public/assets/78.jpg";
+import img29 from "@/public/assets/29.jpg";
+import img35 from "@/public/assets/35.jpg";
+import img34 from "@/public/assets/34.jpg";
 
 const checkIcon = (
   <svg
@@ -46,8 +50,8 @@ const Hero = () => {
         </h1>
         <div className="opacity-90 mb-6">
           <h2>
-            You don't need to hire a full day advertising manager anymore. I'll
-            create for you{" "}
+            You don&apos;t need to hire a full day advertising manager anymore.
+            I&apos;ll create for you{" "}
             <span className="underline decoration-dashed underline-offset-8 decoration-base-400">
               success
             </span>{" "}
@@ -59,22 +63,22 @@ const Hero = () => {
             <div className="avatar-group -space-x-6">
               <div className="avatar">
                 <div className="w-12">
-                  <img src="https://randomuser.me/api/portraits/men/78.jpg" />
+                  <Image src={img78} width={96} height={96} />
                 </div>
               </div>
               <div className="avatar">
                 <div className="w-12">
-                  <img src="https://randomuser.me/api/portraits/men/29.jpg" />
+                  <Image src={img29} width={96} height={96} />
                 </div>
               </div>
               <div className="avatar">
                 <div className="w-12">
-                  <img src="https://randomuser.me/api/portraits/women/35.jpg" />
+                  <Image src={img35} width={96} height={96} />
                 </div>
               </div>
               <div className="avatar">
                 <div className="w-12">
-                  <img src="https://randomuser.me/api/portraits/men/34.jpg" />
+                  <Image src={img34} width={96} height={96} />
                 </div>
               </div>
             </div>
